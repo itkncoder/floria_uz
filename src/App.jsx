@@ -400,32 +400,68 @@ function App() {
     )
   }
 
+  const DeliveryIcon = ({ className = "w-6 h-6" }) => {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+          fill="currentColor"
+        />
+      </svg>
+    )
+  }
+
   const CarIcon = ({ className = "w-10 h-10" }) => {
     const gradientId = useId()
     return (
       <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id={`${gradientId}-car`} x1="3" y1="5" x2="21" y2="19" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#FF9A9E" />
-            <stop offset="50%" stopColor="#FAD0C4" />
-            <stop offset="100%" stopColor="#F5576C" />
+          <linearGradient id={`${gradientId}-car`} x1="2" y1="4" x2="22" y2="20" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#FF6B9D" />
+            <stop offset="50%" stopColor="#FF8E9B" />
+            <stop offset="100%" stopColor="#FF6B9D" />
           </linearGradient>
-          <linearGradient id={`${gradientId}-glass`} x1="5" y1="6" x2="19" y2="12" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#B3E5FC" stopOpacity="0.9" />
+          <linearGradient id={`${gradientId}-glass`} x1="6" y1="7" x2="18" y2="13" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
+            <stop offset="50%" stopColor="#E3F2FD" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="#BBDEFB" stopOpacity="0.8" />
+          </linearGradient>
+          <linearGradient id={`${gradientId}-wheel`} x1="4" y1="15" x2="8" y2="19" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#2C3E50" />
+            <stop offset="100%" stopColor="#1A1A1A" />
           </linearGradient>
         </defs>
+        {/* Кузов машины */}
         <path
-          d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v5.5c0 .83.67 1.5 1.5 1.5H4c.55 0 1-.45 1-1v-1h14v1c0 .55.45 1 1 1h.5c.83 0 1.5-.67 1.5-1.5V12l-2.08-5.99z"
+          d="M20 9.5C20 8.67 19.33 8 18.5 8H17L15.5 5.5C15.22 4.89 14.62 4.5 14 4.5H10C9.38 4.5 8.78 4.89 8.5 5.5L7 8H5.5C4.67 8 4 8.67 4 9.5V17.5C4 18.33 4.67 19 5.5 19H6C6.55 19 7 18.55 7 18V17H17V18C17 18.55 17.45 19 18 19H18.5C19.33 19 20 18.33 20 17.5V9.5Z"
           fill={`url(#${gradientId}-car)`}
-          stroke="#FF5F6D"
-          strokeWidth="0.6"
+          stroke="#FF4757"
+          strokeWidth="0.5"
         />
-        <path d="M5 11l1.5-4.5h11L19 11H5z" fill={`url(#${gradientId}-glass)`} />
-        <circle cx="6.5" cy="15" r="1.6" fill="#1F2933" />
-        <circle cx="17.5" cy="15" r="1.6" fill="#1F2933" />
-        <circle cx="6.5" cy="15" r="0.9" fill="#90CAF9" />
-        <circle cx="17.5" cy="15" r="0.9" fill="#90CAF9" />
+        {/* Лобовое стекло */}
+        <path
+          d="M7 9H17L16.5 10.5H7.5L7 9Z"
+          fill={`url(#${gradientId}-glass)`}
+        />
+        {/* Боковое стекло */}
+        <path
+          d="M7.5 10.5H16.5V12.5H7.5V10.5Z"
+          fill={`url(#${gradientId}-glass)`}
+          opacity="0.6"
+        />
+        {/* Переднее колесо */}
+        <circle cx="7" cy="18" r="2.5" fill={`url(#${gradientId}-wheel)`} />
+        <circle cx="7" cy="18" r="1.5" fill="#34495E" />
+        <circle cx="7" cy="18" r="0.8" fill="#ECF0F1" opacity="0.6" />
+        {/* Заднее колесо */}
+        <circle cx="17" cy="18" r="2.5" fill={`url(#${gradientId}-wheel)`} />
+        <circle cx="17" cy="18" r="1.5" fill="#34495E" />
+        <circle cx="17" cy="18" r="0.8" fill="#ECF0F1" opacity="0.6" />
+        {/* Решетка радиатора */}
+        <rect x="10" y="9" width="4" height="1.5" rx="0.3" fill="#FF4757" opacity="0.5" />
+        {/* Фары */}
+        <circle cx="6" cy="10.5" r="1" fill="#FFF9C4" opacity="0.9" />
+        <circle cx="18" cy="10.5" r="1" fill="#FFF9C4" opacity="0.9" />
       </svg>
     )
   }
@@ -454,7 +490,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-900 via-purple-900 to-pink-800 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#800020] via-[#722F37] to-[#8B0000] flex items-center justify-center p-4 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,182,193,0.2),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(255,105,180,0.2),transparent_50%),radial-gradient(circle_at_50%_50%,rgba(255,20,147,0.15),transparent_70%),radial-gradient(circle_at_70%_20%,rgba(255,215,0,0.1),transparent_60%)] animate-gentle-pulse"></div>
         
@@ -519,7 +555,7 @@ function App() {
               <span className="font-montserrat font-semibold text-base">Eng yangi gullar</span>
             </div>
             <div className="flex items-center gap-3 px-5 py-3 glass rounded-full border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105">
-              <CarIcon className="w-6 h-6 text-white" />
+              <DeliveryIcon className="w-6 h-6 text-white" />
               <span className="font-montserrat font-semibold text-base">Tez yetkazib berish</span>
             </div>
             <div className="flex items-center gap-3 px-5 py-3 glass rounded-full border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105">
@@ -542,7 +578,7 @@ function App() {
             <div className="absolute top-2 right-4 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="absolute bottom-2 left-6 w-1.5 h-1.5 bg-yellow-300 rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="relative z-10 flex items-center gap-4">
-              <CarIcon className="w-10 h-10 text-white drop-shadow-lg" />
+              <span className="text-4xl drop-shadow-lg">🚚</span>
               <span className="text-2xl font-montserrat font-bold drop-shadow-lg">Buyurtma berish</span>
             </div>
             <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">            </div>
@@ -558,7 +594,7 @@ function App() {
             <div className="absolute top-2 right-4 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="absolute bottom-2 left-6 w-1.5 h-1.5 bg-yellow-300 rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="relative z-10 flex items-center gap-4">
-              <PhoneIcon className="w-10 h-10 text-white drop-shadow-lg" />
+              <span className="text-4xl drop-shadow-lg">📞</span>
               <span className="text-2xl font-montserrat font-bold drop-shadow-lg">Qo'ng'iroq qilish</span>
             </div>
             <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">            </div>
@@ -576,7 +612,7 @@ function App() {
             <div className="absolute top-3 right-6 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="absolute bottom-3 left-4 w-1.5 h-1.5 bg-cyan-200 rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="relative z-10 flex items-center gap-4">
-              <TelegramIcon className="w-10 h-10 text-white drop-shadow-lg" />
+              <span className="text-4xl drop-shadow-lg">✈️</span>
               <span className="text-2xl font-montserrat font-bold drop-shadow-lg">Telegram kanalimiz</span>
             </div>
             <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">            </div>
@@ -594,7 +630,7 @@ function App() {
             <div className="absolute top-2 right-5 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="absolute bottom-2 left-5 w-1.5 h-1.5 bg-yellow-200 rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="relative z-10 flex items-center gap-4">
-              <InstagramIcon className="w-10 h-10 text-white drop-shadow-lg" />
+              <span className="text-4xl drop-shadow-lg">📷</span>
               <span className="text-2xl font-montserrat font-bold drop-shadow-lg">Instagram sahifamiz</span>
             </div>
             <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">            </div>
@@ -612,7 +648,7 @@ function App() {
             <div className="absolute top-2 right-4 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="absolute bottom-2 left-6 w-1.5 h-1.5 bg-yellow-300 rounded-full opacity-0 group-hover:opacity-100"></div>
             <div className="relative z-10 flex items-center gap-4">
-              <LocationIcon className="w-10 h-10 text-white drop-shadow-lg" />
+              <span className="text-4xl drop-shadow-lg">📍</span>
               <div className="flex flex-col items-start">
                 <span className="text-2xl font-montserrat font-bold drop-shadow-lg">Manzil</span>
                 <span className="text-sm font-montserrat text-white/90 drop-shadow-md">{address}</span>
