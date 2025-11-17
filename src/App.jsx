@@ -567,7 +567,7 @@ function App() {
 
         <div className="space-y-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
           <a
-            href="https://t.me/floria_flowers_uz"
+            href={telegramLink}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative w-full overflow-hidden text-white font-bold py-7 px-8 rounded-[2rem] transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center gap-4 button-magical-pink"
@@ -601,7 +601,7 @@ function App() {
           </a>
 
           <a
-            href={telegramLink}
+            href="https://t.me/floria_flowers_uz"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative w-full overflow-hidden text-white font-bold py-7 px-8 rounded-[2rem] transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center gap-4 button-magical-blue"
